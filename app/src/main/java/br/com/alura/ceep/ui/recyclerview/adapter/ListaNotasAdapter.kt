@@ -2,12 +2,9 @@ package br.com.alura.ceep.ui.recyclerview.adapter
 
 import android.content.Context
 import android.view.LayoutInflater
-import android.view.View
-import android.view.View.GONE
-import android.view.View.VISIBLE
 import android.view.ViewGroup
 import android.widget.ImageView
-import android.widget.TextView
+import androidx.databinding.BindingAdapter
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
 import androidx.recyclerview.widget.DiffUtil
@@ -41,9 +38,6 @@ class ListaNotasAdapter(
         RecyclerView.ViewHolder(viewDataBinding.root) {
 
         private lateinit var nota: Nota
-        private val campoImagem: ImageView by lazy {
-            itemView.item_nota_imagem
-        }
 
         init {
             itemView.setOnClickListener {
@@ -55,9 +49,7 @@ class ListaNotasAdapter(
 
         fun vincula(nota: Nota) {
             this.nota = nota
-
             viewDataBinding.setVariable(BR.nota, nota)
-            campoImagem.carregaImagem(nota.imagemUrl)
         }
 
     }
@@ -72,4 +64,9 @@ object DiffCallback : DiffUtil.ItemCallback<Nota>() {
 
     override fun areContentsTheSame(oldItem: Nota, newItem: Nota) = oldItem == newItem
 
+}
+
+@BindingAdapter("carregaImagem")
+fun carregaImagemPorUrl(view: ImageView, url: String) {
+    view.carregaImagem(url)
 }
