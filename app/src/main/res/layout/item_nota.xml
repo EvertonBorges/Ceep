@@ -86,7 +86,7 @@
 
         <variable
             name="nota"
-            type="br.com.alura.ceep.model.Nota" />
+            type="br.com.alura.ceep.ui.databinding.NotaData" />
 
         <import type="android.view.View"/>
     </data>
