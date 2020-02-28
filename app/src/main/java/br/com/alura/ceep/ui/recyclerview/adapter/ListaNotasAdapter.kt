@@ -41,12 +41,6 @@ class ListaNotasAdapter(
         RecyclerView.ViewHolder(viewDataBinding.root) {
 
         private lateinit var nota: Nota
-        private val campoDescricao: TextView by lazy {
-            itemView.item_nota_descricao
-        }
-        private val campoFavorita: ImageView by lazy {
-            itemView.item_nota_favorita
-        }
         private val campoImagem: ImageView by lazy {
             itemView.item_nota_imagem
         }
@@ -63,19 +57,7 @@ class ListaNotasAdapter(
             this.nota = nota
 
             viewDataBinding.setVariable(BR.nota, nota)
-
-            campoDescricao.text = nota.descricao
-            if (this.nota.favorita) {
-                campoFavorita.visibility = VISIBLE
-            } else {
-                campoFavorita.visibility = GONE
-            }
             campoImagem.carregaImagem(nota.imagemUrl)
-            if (nota.imagemUrl.isEmpty()) {
-                campoImagem.visibility = GONE
-            } else {
-                campoImagem.visibility = VISIBLE
-            }
         }
 
     }
